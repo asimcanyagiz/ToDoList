@@ -6,7 +6,7 @@ const btnDOM = document.querySelector("#liveToastBtn");
 ///First we need the get all events with eventlistener
 //Event Listener
 eventListener();
-function eventlistener(){
+function eventListener(){
 
     //Task input
     taskDOM.addEventListener('keyup',)
