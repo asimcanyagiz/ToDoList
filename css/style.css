@@ -105,4 +105,11 @@
   .button:hover {
     background-color: #bbb;
   }
+
+  .iClose{
+    color: red;
+  }
+  .iClose:hover{
+    color: black;
+  }
   
