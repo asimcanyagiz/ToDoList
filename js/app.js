@@ -13,5 +13,20 @@ function eventListener(){
     //List click
     listDOM.addEventListener('click',)
     //Ekle Button Click
-    btnDOM.addEventListener('click',)
+    btnDOM.addEventListener('submit',newElement())
+}
+
+//Function for add a task
+function newElement() {
+
+    const li = document.createElement('li')
+    li.className = "list-group-item d-flex justify-content-between align-items-center";
+    li.innerHTML = `${taskDOM.value} ${'<i class="bi bi-x iClose"></i>'}`;
+    
+    if(taskDOM.value === ''){
+        console.log("Eksik")
+    }else{        
+        listDOM.appendChild(li)
+    }
+    
 }
