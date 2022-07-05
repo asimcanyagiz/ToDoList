@@ -8,6 +8,8 @@ const btnDOM = document.querySelector("#liveToastBtn");
 eventListener();
 function eventListener(){
 
+    //DOM
+    document.addEventListener('DOMContentLoaded', getTasks)
     //Task input
     taskDOM.addEventListener('keyup',)
     //List click
@@ -47,6 +49,24 @@ function addLocalStorage(task){
     tasks.push(task)
     localStorage.setItem('tasks',JSON.stringify(tasks))
 
+}
+
+//Get elements from local storage and add them to main page
+function getTasks(){
+    let tasks;
+    
+    if(localStorage.getItem('tasks') === null){
+        tasks = [];
+    }else{
+        tasks = JSON.parse(localStorage.getItem('tasks'))
+    }
+
+    tasks.forEach(task => {
+        const li = document.createElement('li')
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
+        li.innerHTML = `${task} ${'<i class="bi bi-x iClose"></i>'}`;
+        listDOM.appendChild(li)
+    });
 }
 
 //Function for remove a task
