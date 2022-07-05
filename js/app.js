@@ -11,11 +11,12 @@ function eventListener(){
     //DOM
     document.addEventListener('DOMContentLoaded', getTasks)
     //Task input
-    taskDOM.addEventListener('keyup',)
+    taskDOM.addEventListener('keyup', filterTasks)
+    btnDOM.addEventListener('submit', newElement)
     //List click
     listDOM.addEventListener('click',)
-    //Ekle Button Click
-    btnDOM.addEventListener('click',newElement)
+    //Button Click
+    btnDOM.addEventListener('click', newElement)
 
 }
 
@@ -37,6 +38,7 @@ function newElement() {
         addLocalStorage(taskDOM.value)
     }
 
+    taskDOM.value = "";
 }
 
 //Function for add elements to local storage
@@ -101,7 +103,7 @@ function removeLocalStorage(taskItem){
 
 
     tasks.forEach(function(task, index){
-        console.log(task, index)
+
         if(taskItem.textContent == task){
             tasks.splice(index, 1);
         }
@@ -109,4 +111,19 @@ function removeLocalStorage(taskItem){
     
     localStorage.setItem('tasks', JSON.stringify(tasks));
 
+}
+
+//Filter Tasks
+function filterTasks(item) {
+    const text = item.target.value.toLowerCase();
+
+    document.querySelectorAll('.list-group-item').forEach(task => {
+        const item = task.textContent;
+        if(item.toLowerCase().indexOf(text) == -1) {
+            task.classList.remove('d-flex')
+            task.classList.add('d-none')
+        }else{
+            task.classList.add('d-flex')
+        }
+    });
 }
