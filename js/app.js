@@ -68,8 +68,7 @@ function getTasks(){
     tasks.forEach(task => {
         const li = document.createElement('li')
         li.className = "list-group-item d-flex justify-content-between align-items-center";
-        li.appendChild(document.createTextNode(task.value))
-        li.innerHTML = `${task} `;
+        li.appendChild(document.createTextNode(task))
         const link = document.createElement('a')
         link.innerHTML = `${'<i class="bi bi-x iClose"></i>'}`
         li.append(link)
@@ -82,8 +81,8 @@ function removeElement(event){
 
     if(event.target.parentElement.parentElement.classList.contains('list-group-item')){
 
-        event.target.parentElement.parentElement.remove();
         removeLocalStorage(event.target.parentElement.parentElement);
+        event.target.parentElement.parentElement.remove();
 
     }
 
