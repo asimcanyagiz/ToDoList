@@ -13,7 +13,8 @@ function eventListener(){
     //List click
     listDOM.addEventListener('click',)
     //Ekle Button Click
-    btnDOM.addEventListener('submit',newElement())
+    btnDOM.addEventListener('click',newElement)
+
 }
 
 //Function for add a task
@@ -27,6 +28,15 @@ function newElement() {
         console.log("Eksik")
     }else{        
         listDOM.appendChild(li)
+    }
+
+}
+
+//Function for remove a task
+function removeElement(event){
+
+    if(event.target.parentElement.classList.contains('d-flex')){
+        event.target.parentElement.remove();
     }
     
 }
