@@ -2,7 +2,6 @@
 const taskDOM = document.querySelector("#task");
 const listDOM = document.querySelector("#list");
 const btnDOM = document.querySelector("#liveToastBtn");
-const form = document.querySelector("#taskInputForm");
 
 ///First we need the get all events with eventlistener
 //Event Listener
