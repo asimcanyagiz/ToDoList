@@ -16,10 +16,10 @@
   </head>
   <body>
 <!-- Header - Start -->
-    <!-- <div class="mr-1" style="position: relative">
+    <div class="mr-1" style="position: relative">
       <div style="position: absolute; top: 0; right: 0">
         <div
-          id="liveToast"
+          id="successToast"
           class="toast success hide"
           role="alert"
           aria-live="assertive"
@@ -40,10 +40,11 @@
         </div>
       </div>
     </div>
+    
     <div class="mr-1" style="position: relative">
       <div style="position: absolute; top: 0; right: 0">
         <div
-          id="liveToast"
+          id="errorToast"
           class="toast error hide"
           role="alert"
           aria-live="assertive"
@@ -63,7 +64,8 @@
           <div class="toast-body">Listeye boş ekleme yapamazsınız!</div>
         </div>
       </div>
-    </div> -->
+    </div> 
+
     <div class="container">
       <div class="header">
         <img
@@ -72,7 +74,7 @@
           alt=""
         />
         <h2>Yapılacaklar Listesi</h2>
-        <form>
+        <form id="taskInputForm">
             <input type="text" id="task" placeholder="Bugün ne yapacaksın?"/>
             <input for="task" onclick="newElement()" id="liveToastBtn" class="button" value="Ekle" type="submit"></input>
         </form>
