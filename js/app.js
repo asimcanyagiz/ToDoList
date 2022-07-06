@@ -2,6 +2,7 @@
 const taskDOM = document.querySelector("#task");
 const listDOM = document.querySelector("#list");
 const btnDOM = document.querySelector("#liveToastBtn");
+const form = document.querySelector("#taskInputForm");
 
 ///First we need the get all events with eventlistener
 //Event Listener
@@ -10,35 +11,42 @@ function eventListener(){
 
     //DOM
     document.addEventListener('DOMContentLoaded', getTasks)
+
     //Task input
     taskDOM.addEventListener('keyup', filterTasks)
-    btnDOM.addEventListener('submit', newElement)
+
     //List click
-    listDOM.addEventListener('click',)
+    //listDOM.addEventListener('click',) !!! read the button click comment
+
     //Button Click
-    btnDOM.addEventListener('click', newElement)
+    // form.addEventListener("onsubmit", newElement()) !!!better way is onclick! faster and effective.
 
 }
 
 //Function for add a task
-function newElement() {
-
-    const li = document.createElement('li')
-    li.className = "list-group-item d-flex justify-content-between align-items-center";
-    li.appendChild(document.createTextNode(task.value))
-    const link = document.createElement('a')
-    link.innerHTML = `${'<i class="bi bi-x iClose"></i>'}`
-    li.append(link)
-    listDOM.appendChild(li)
+btnDOM.onclick = function newElement(task) {
     
     if(taskDOM.value === ''){
-        console.log("Eksik")
-    }else{        
-        listDOM.appendChild(li)
-        addLocalStorage(taskDOM.value)
-    }
+        $('#errorToast').toast("show");
+        
+    }else if(taskDOM !== ""){        
+        const li = document.createElement('li')
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
 
+        li.appendChild(document.createTextNode(taskDOM.value))
+        const link = document.createElement('a')
+        link.innerHTML = `${'<i class="bi bi-x iClose"></i>'}`
+
+        li.append(link)
+        listDOM.appendChild(li)
+
+        addLocalStorage(taskDOM.value)
+        
+        $('#successToast').toast("show");
+    }
+    
     taskDOM.value = "";
+    task.preventDefault();
 }
 
 //Function for add elements to local storage
